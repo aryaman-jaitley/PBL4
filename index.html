@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentinel AI | Project Report</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* MINIMALIST THEME CONFIGURATION */
+        :root {
+            --deep-blue: #0f172a;  /* Slate 900 */
+            --off-white: #f8fafc;  /* Slate 50 */
+            --accent-green: #10b981; /* Emerald 500 */
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--off-white);
+            color: var(--deep-blue);
+            line-height: 1.6;
+        }
+
+        .hero-text { letter-spacing: -0.05em; line-height: 1.1; }
+        
+        /* SMOOTH SCROLL & UTILITIES */
+        html { scroll-behavior: smooth; }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(15, 23, 42, 0.05);
+        }
+        
+        /* HOVER EFFECTS */
+        .hover-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* TIMELINE LINE FOR FUTURE SCOPE */
+        .timeline-line::before {
+            content: '';
+            position: absolute;
+            top: 24px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #e2e8f0;
+            z-index: 0;
+        }
+        @media (max-width: 768px) {
+            .timeline-line::before { display: none; } /* Hide line on mobile */
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-slate-200 selection:text-slate-900">
+
+    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
+        <div class="max-w-5xl mx-auto px-6 h-20 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <span class="font-bold text-xl tracking-tight">PBL4</span>
+                <span class="hidden md:block px-2 py-0.5 rounded-full bg-slate-100 text-[10px] font-semibold tracking-wider uppercase text-slate-500">Capstone 2026</span>
+            </div>
+            <div class="text-right">
+                <p class="text-[10px] font-bold uppercase tracking-widest text-slate-400">Student ID</p>
+                <p class="text-xs font-semibold">23FE10CSE00173</p>
+            </div>
+        </div>
+    </nav>
+
+    <header class="pt-48 pb-32 px-6 max-w-5xl mx-auto text-center">
+        <div class="inline-block mb-6 px-4 py-1.5 rounded-full border border-slate-300 text-slate-500 text-xs font-medium uppercase tracking-widest">
+            Project Management Meets Technical Execution
+        </div>
+        <h1 class="hero-text text-6xl md:text-8xl font-black mb-8 text-slate-900">
+            Sentinel AI
+        </h1>
+        <p class="text-xl md:text-2xl text-slate-500 max-w-2xl mx-auto font-light mb-12">
+            A "Smart Bridge" that automates the entire quality lifecycle using Gemini 2.5 and Playwright.
+        </p>
+        
+        <a href="https://drive.google.com/file/d/1U8h1ldmRxnWLDPHnNj_a8FZGLo874gJ1/view?usp=sharing" target="_blank" class="inline-block bg-slate-900 text-white px-10 py-4 rounded-full font-semibold hover:bg-slate-700 transition-all transform hover:scale-105 shadow-xl shadow-slate-200">
+            View Live Demo
+        </a>
+
+    </header>
+
+    <main class="max-w-5xl mx-auto px-6 space-y-32 mb-32">
+
+        <section class="text-center">
+            <h2 class="text-3xl font-bold mb-4 tracking-tight">Problem Statement</h2>
+            <p class="text-slate-900 font-medium text-xl mb-16 leading-relaxed max-w-3xl mx-auto">
+                AI-Driven Validation and Improvement of Test Case Generation
+            </p>
+            
+            <div class="mb-10 flex items-center justify-center gap-4">
+                <div class="h-px w-12 bg-slate-300"></div>
+                <h3 class="text-sm font-black uppercase tracking-[0.2em] text-slate-400">Use Case</h3>
+                <div class="h-px w-12 bg-slate-300"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+                <div class="glass-card p-8 rounded-2xl border-t-4 border-slate-900 hover-card bg-white">
+                    <div class="w-12 h-12 bg-slate-100 rounded-full flex items-center justify-center mb-6 text-slate-900">
+                        <i class="fa-regular fa-building text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-3 leading-tight">Operational Inefficiency</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">
+                        Testers lose valuable hours to repetitive manual tasks instead of focusing on complex, high-value validation.
+                    </p>
+                </div>
+
+                <div class="glass-card p-8 rounded-2xl border-t-4 border-slate-700 hover-card bg-white">
+                    <div class="w-12 h-12 bg-slate-100 rounded-full flex items-center justify-center mb-6 text-slate-900">
+                        <i class="fa-solid fa-users text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-3 leading-tight">Velocity Bottlenecks</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">
+                        Manual testing creates significant delays in the release cycle, directly stifling innovation and speed-to-market.
+                    </p>
+                </div>
+
+                <div class="glass-card p-8 rounded-2xl border-t-4 border-slate-500 hover-card bg-white">
+                    <div class="w-12 h-12 bg-slate-100 rounded-full flex items-center justify-center mb-6 text-slate-900">
+                        <i class="fa-solid fa-shield-halved text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-3 leading-tight">Critical Risk Exposure</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">
+                        Strict time limitations leave critical code untested, exposing the system to significant vulnerabilities.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl font-bold mb-10 tracking-tight">Tech Stack</h2>
+            <div class="flex flex-wrap justify-center gap-4">
+                <div class="px-6 py-3 bg-white rounded-full border border-slate-200 shadow-sm flex items-center gap-3 hover:border-blue-500 transition-colors">
+                    <i class="fa-brands fa-google text-blue-500"></i><span class="font-bold text-slate-700 text-sm">Gemini 2.5 Flash</span>
+                </div>
+                <div class="px-6 py-3 bg-white rounded-full border border-slate-200 shadow-sm flex items-center gap-3 hover:border-yellow-500 transition-colors">
+                    <i class="fa-brands fa-python text-yellow-500"></i><span class="font-bold text-slate-700 text-sm">Python</span>
+                </div>
+                <div class="px-6 py-3 bg-white rounded-full border border-slate-200 shadow-sm flex items-center gap-3 hover:border-cyan-500 transition-colors">
+                    <i class="fa-brands fa-react text-cyan-500"></i><span class="font-bold text-slate-700 text-sm">React</span>
+                </div>
+                <div class="px-6 py-3 bg-white rounded-full border border-slate-200 shadow-sm flex items-center gap-3 hover:border-emerald-500 transition-colors">
+                    <i class="fa-solid fa-bolt text-emerald-500"></i><span class="font-bold text-slate-700 text-sm">FastAPI</span>
+                </div>
+                <div class="px-6 py-3 bg-white rounded-full border border-slate-200 shadow-sm flex items-center gap-3 hover:border-green-600 transition-colors">
+                    <i class="fa-solid fa-masks-theater text-green-600"></i><span class="font-bold text-slate-700 text-sm">Playwright</span>
+                </div>
+                <div class="px-6 py-3 bg-white rounded-full border border-slate-200 shadow-sm flex items-center gap-3 hover:border-purple-500 transition-colors">
+                    <i class="fa-solid fa-rocket text-purple-500"></i><span class="font-bold text-slate-700 text-sm">Vite</span>
+                </div>
+                <div class="px-6 py-3 bg-white rounded-full border border-slate-200 shadow-sm flex items-center gap-3 hover:border-slate-800 transition-colors">
+                    <i class="fa-solid fa-lock text-slate-800"></i><span class="font-bold text-slate-700 text-sm">JWT Auth</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="text-center">
+            <h2 class="text-3xl font-bold mb-10 tracking-tight">System Architecture</h2>
+            <div class="glass-card p-4 rounded-3xl inline-block max-w-5xl shadow-xl">
+                <img src="architecture.png" alt="Sentinel AI Architecture Diagram" class="max-w-full h-auto rounded-2xl" onerror="this.src='https://via.placeholder.com/800x400?text=Architecture+Image+Not+Found'">
+            </div>
+        </section>
+
+        <section>
+            <h2 class="text-3xl font-bold mb-10 tracking-tight text-center">Current Scope</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                
+                <div class="p-8 rounded-3xl bg-slate-900 text-white relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 p-6 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <i class="fa-solid fa-compass text-9xl"></i>
+                    </div>
+                    <div class="flex items-center gap-4 mb-6 relative z-10">
+                        <div class="p-3 bg-white/10 rounded-xl"><i class="fa-solid fa-compass text-xl"></i></div>
+                        <h3 class="text-xl font-bold">Smart Code Discovery</h3>
+                    </div>
+                    <ul class="space-y-3 relative z-10 text-sm text-slate-300">
+                        <li class="flex gap-3"><i class="fa-solid fa-check text-green-400 mt-1"></i> Reads project like a developer.</li>
+                        <li class="flex gap-3"><i class="fa-solid fa-check text-green-400 mt-1"></i> Maps full system flows & dependencies.</li>
+                        <li class="flex gap-3"><i class="fa-solid fa-check text-green-400 mt-1"></i> Understands UI elements deeply.</li>
+                        <li class="flex gap-3"><i class="fa-solid fa-check text-green-400 mt-1"></i> Eliminates assumption-based testing.</li>
+                    </ul>
+                </div>
+
+                <div class="p-8 rounded-3xl bg-white border border-slate-200 relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-2 h-full bg-emerald-500"></div> <div class="flex items-center gap-4 mb-6">
+                        <div class="p-3 bg-emerald-100 text-emerald-600 rounded-xl"><i class="fa-solid fa-chart-pie text-xl"></i></div>
+                        <h3 class="text-xl font-bold text-slate-900">Gap Analysis</h3>
+                    </div>
+                    <ul class="space-y-3 text-sm text-slate-600">
+                        <li class="flex gap-3"><i class="fa-solid fa-angle-right text-emerald-500 mt-1"></i> Identifies high-risk, low-coverage areas.</li>
+                        <li class="flex gap-3"><i class="fa-solid fa-angle-right text-emerald-500 mt-1"></i> Detects "dark logic" (edge cases).</li>
+                        <li class="flex gap-3"><i class="fa-solid fa-angle-right text-emerald-500 mt-1"></i> Flags code vs. test behavior mismatches.</li>
+                        <li class="flex gap-3"><i class="fa-solid fa-angle-right text-emerald-500 mt-1"></i> Prioritizes gaps by failure risk.</li>
+                    </ul>
+                </div>
+
+                <div class="p-8 rounded-3xl bg-white border border-slate-200 relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-2 h-full bg-emerald-500"></div> <div class="flex items-center gap-4 mb-6">
+                        <div class="p-3 bg-emerald-100 text-emerald-600 rounded-xl"><i class="fa-solid fa-robot text-xl"></i></div>
+                        <h3 class="text-xl font-bold text-slate-900">Execution Engine</h3>
+                    </div>
+                    <ul class="space-y-3 text-sm text-slate-600">
+                        <li class="flex gap-3"><i class="fa-solid fa-angle-right text-emerald-500 mt-1"></i> Playwright & Pytest driven execution.</li>
+                        <li class="flex gap-3"><i class="fa-solid fa-angle-right text-emerald-500 mt-1"></i> High-performance automated UI testing.</li>
+                        <li class="flex gap-3"><i class="fa-solid fa-angle-right text-emerald-500 mt-1"></i> Built-in patience for flaky loads.</li>
+                        <li class="flex gap-3"><i class="fa-solid fa-angle-right text-emerald-500 mt-1"></i> Ensures reliable, accurate results.</li>
+                    </ul>
+                </div>
+
+                <div class="p-8 rounded-3xl bg-slate-900 text-white relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 p-6 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <i class="fa-brands fa-jira text-9xl"></i>
+                    </div>
+                    <div class="flex items-center gap-4 mb-6 relative z-10">
+                        <div class="p-3 bg-white/10 rounded-xl"><i class="fa-brands fa-jira text-xl"></i></div>
+                        <h3 class="text-xl font-bold">Jira Command Center</h3>
+                    </div>
+                    <ul class="space-y-3 relative z-10 text-sm text-slate-300">
+                        <li class="flex gap-3"><i class="fa-solid fa-check text-green-400 mt-1"></i> Central hub for reporting.</li>
+                        <li class="flex gap-3"><i class="fa-solid fa-check text-green-400 mt-1"></i> Links test cases to Jira tasks.</li>
+                        <li class="flex gap-3"><i class="fa-solid fa-check text-green-400 mt-1"></i> Auto-attaches evidence on pass.</li>
+                        <li class="flex gap-3"><i class="fa-solid fa-check text-green-400 mt-1"></i> Full management visibility.</li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <section>
+            <h2 class="text-3xl font-bold mb-16 tracking-tight text-center">Future Scope</h2>
+            <div class="relative timeline-line max-w-4xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center relative z-10">
+                    
+                    <div class="flex flex-col items-center">
+                        <div class="w-14 h-14 bg-white border-4 border-slate-200 text-slate-900 rounded-full flex items-center justify-center text-xl mb-6 shadow-sm">
+                            <i class="fa-solid fa-bolt"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2">Speed Optimization</h3>
+                        <p class="text-sm text-slate-500 px-4">Reducing end-to-end processing time for faster feedback loops.</p>
+                    </div>
+
+                    <div class="flex flex-col items-center">
+                        <div class="w-14 h-14 bg-white border-4 border-slate-200 text-slate-900 rounded-full flex items-center justify-center text-xl mb-6 shadow-sm">
+                            <i class="fa-solid fa-network-wired"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2">Multi-Repo Support</h3>
+                        <p class="text-sm text-slate-500 px-4">Expanding compatibility for different project types and hosting.</p>
+                    </div>
+
+                    <div class="flex flex-col items-center">
+                        <div class="w-14 h-14 bg-white border-4 border-slate-200 text-slate-900 rounded-full flex items-center justify-center text-xl mb-6 shadow-sm">
+                            <i class="fa-regular fa-clock"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2">Scheduled Automation</h3>
+                        <p class="text-sm text-slate-500 px-4">Enabling fully automated, time-based test execution.</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="text-3xl font-bold mb-12 tracking-tight text-center">Business Value Delivered</h2>
+            
+            <div class="max-w-5xl mx-auto space-y-6">
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover-card">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="p-2 bg-green-100 text-green-600 rounded-lg"><i class="fa-solid fa-money-bill-wave"></i></div>
+                            <h3 class="font-bold text-sm uppercase tracking-wide text-slate-500">Cost Per Test Suite</h3>
+                        </div>
+                        <p class="text-sm text-slate-600 mb-2">Reduced from approx.</p>
+                        <p class="text-2xl font-black text-slate-900 mb-1">₹35,000 <span class="text-xs font-normal text-slate-400">(Human)</span></p>
+                        <div class="text-center text-xs text-slate-400 my-1">to</div>
+                        <p class="text-2xl font-black text-green-600">< ₹35 <span class="text-xs font-normal text-slate-400">(AI)</span></p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover-card">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="p-2 bg-green-100 text-green-600 rounded-lg"><i class="fa-solid fa-stopwatch"></i></div>
+                            <h3 class="font-bold text-sm uppercase tracking-wide text-slate-500">Test Creation Speed</h3>
+                        </div>
+                        <p class="text-sm text-slate-600 mb-2">Shrunk from approx.</p>
+                        <p class="text-2xl font-black text-slate-900 mb-1">4 Hours <span class="text-xs font-normal text-slate-400">/ feature</span></p>
+                        <div class="text-center text-xs text-slate-400 my-1">to</div>
+                        <p class="text-2xl font-black text-green-600">20 Seconds</p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover-card">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="p-2 bg-green-100 text-green-600 rounded-lg"><i class="fa-solid fa-people-arrows"></i></div>
+                            <h3 class="font-bold text-sm uppercase tracking-wide text-slate-500">Asset Reutilization</h3>
+                        </div>
+                        <p class="text-sm text-slate-600 leading-relaxed mb-4">
+                            Engineers are reallocated from <span class="line-through decoration-slate-400 text-slate-400">repetitive testing</span> to <strong class="text-slate-900">high-value innovation</strong>.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+                    
+                    <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover-card">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="p-2 bg-green-100 text-green-600 rounded-lg"><i class="fa-solid fa-rocket"></i></div>
+                            <h3 class="font-bold text-sm uppercase tracking-wide text-slate-500">Release Cycles</h3>
+                        </div>
+                        <p class="text-sm text-slate-600 mb-2">Accelerated to</p>
+                        <p class="text-2xl font-black text-slate-900 mb-1">Daily Releases</p>
+                        <p class="text-xs text-slate-400">Removed 18hr bottleneck</p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover-card">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="p-2 bg-green-100 text-green-600 rounded-lg"><i class="fa-solid fa-comments"></i></div>
+                            <h3 class="font-bold text-sm uppercase tracking-wide text-slate-500">Immediate Feedback</h3>
+                        </div>
+                        <p class="text-sm text-slate-600 mb-2">Real-time Pass/Fail</p>
+                        <p class="text-2xl font-black text-green-600 mb-1">Instant Results</p>
+                        <p class="text-xs text-slate-400">Upon code completion</p>
+                    </div>
+                    
+                </div>
+
+                <div class="glass-card p-8 mt-12 rounded-3xl">
+                   <div class="h-[500px] w-full">
+                        <canvas id="impactChart"></canvas>
+                   </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-slate-900 text-slate-400 py-20 px-6">
+        <div class="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-10">
+            <div>
+                <h4 class="text-white font-bold text-lg mb-1">Aryaman Jaitley</h4>
+                <p class="text-sm font-mono opacity-60">23FE10CSE00173</p>
+                <p class="text-[10px] uppercase tracking-widest mt-6 font-bold text-slate-600">Department of Computer Science & Engineering</p>
+            </div>
+            
+            <div class="text-left md:text-right">
+                <p class="text-[10px] uppercase tracking-widest font-bold text-slate-600 mb-2">Under the Guidance of</p>
+                <h4 class="text-white font-bold text-lg">Mr. Rajat Goel</h4>
+                <p class="text-sm opacity-60 mt-1">Faculty Guide</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Chart Configuration
+        const ctx = document.getElementById('impactChart').getContext('2d');
+        
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Cost (INR)', 'Time (Minutes)'],
+                datasets: [
+                    {
+                        label: 'Manual Process',
+                        data: [35000, 240], // 240 mins = 4 hours
+                        backgroundColor: '#cbd5e1', // Light Slate (Grey)
+                        borderRadius: 4,
+                        barPercentage: 0.6,
+                        categoryPercentage: 0.8
+                    },
+                    {
+                        label: 'Sentinel AI',
+                        data: [35, 0.33], // 0.33 mins = ~20 seconds
+                        backgroundColor: '#0f172a', // Deep Blue
+                        borderRadius: 4,
+                        barPercentage: 0.6,
+                        categoryPercentage: 0.8
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                        align: 'end',
+                        labels: { 
+                            font: { family: "'Inter', sans-serif", size: 12 },
+                            usePointStyle: true,
+                            boxWidth: 8
+                        }
+                    },
+                    tooltip: {
+                        backgroundColor: '#0f172a',
+                        titleFont: { family: "'Inter', sans-serif" },
+                        bodyFont: { family: "'Inter', sans-serif" },
+                        padding: 12,
+                        cornerRadius: 8
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        type: 'logarithmic', // Log scale handles the massive difference between 35,000 and 35
+                        grid: { color: '#f1f5f9' },
+                        ticks: { color: '#94a3b8', font: { family: "'Inter', sans-serif" } }
+                    },
+                    x: {
+                        grid: { display: false },
+                        ticks: { color: '#475569', font: { family: "'Inter', sans-serif", weight: 'bold' } }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
